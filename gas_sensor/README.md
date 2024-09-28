@@ -14,6 +14,8 @@ This project uses a gas sensor to detect gas leaks. When the sensor value exceed
 
 ## Circuit Connections
 
+Below is a detailed explanation of the circuit connections for the gas leak detection system. Ensure that all components are properly connected as described to avoid malfunction. ([Connections](gas_sensor.png))
+
 - Gas Sensor:
 
   - Analog Output (A0) → A0 pin on Arduino
@@ -43,7 +45,7 @@ This project uses a gas sensor to detect gas leaks. When the sensor value exceed
 
 ## Code Explanation
 
-The code reads values from the gas sensor using analogRead(). If the sensor value exceeds the defined threshold (300 in this case), the buzzer is activated, the LED starts blinking, and the LCD screen displays a gas leak warning. The loop continuously checks the gas sensor value, and if it's above the threshold, the alarm system stays active until the gas level drops below the threshold.
+The code reads values from the gas sensor using analogRead(). If the sensor value exceeds the defined threshold (300 in this case), the buzzer is activated, the LED starts blinking, and the LCD screen displays a gas leak warning. The loop continuously checks the gas sensor value, and if it's above the threshold, the alarm system stays active until the gas level drops below the threshold. ([Source Code](src/gas_sensor.ino))
 
 ### Main Code Logic:
 
@@ -52,7 +54,6 @@ The code reads values from the gas sensor using analogRead(). If the sensor valu
 - The LCD shows two lines of text: "Gas Leak!" and "Evacuate!".
 - The LED and buzzer blink and sound at a regular interval until the gas level drops back below the threshold.
 - The system waits for 3 seconds (delayTime) before checking again.
-- [Source Code](src/gas_sensor.ino)
 
 ## How to Use
 
