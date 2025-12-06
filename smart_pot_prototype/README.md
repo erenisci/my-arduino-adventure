@@ -1,27 +1,28 @@
-# Plant Monitoring Prototype
+# Smart Pot Prototype
 
 ## Project Description
 
-This project is a prototype plant monitoring system designed to measure soil moisture, water level, temperature, and ambient light using basic sensors and an OLED display.  
-All sensor values are read through the Arduino and displayed in real time on a 128x64 I2C OLED screen.  
-The project is built for prototyping purposes and will later be adapted to an ESP32 for the final smart plant pot system.
+Smart Pot Prototype is a sensor-based plant monitoring system built to measure soil moisture, water level, temperature, and ambient light.  
+The prototype uses an Arduino UNO and displays all sensor data in real time on a 128x64 SSD1306 OLED screen.  
+This repository represents the **prototyping phase**, which will later be migrated to an ESP32 for the final smart plant pot design.
 
 ## Components Used
 
-- **Arduino UNO** – Main controller for the prototype
-- **0.96" I2C OLED Display (SSD1306)** – Displays sensor readings
-- **Soil Moisture Sensor (Analog)** – Measures soil moisture level
-- **Water Level Sensor (Analog)** – Reads water presence or tank level
-- **LM35 Temperature Sensor** – Provides temperature in °C
-- **LDR (Light-Dependent Resistor)** – Measures ambient light level
-- **10kΩ Resistor** – Used with the LDR voltage divider
-- **Breadboard & Jumper Wires** – For prototyping connections
+- **Arduino UNO** – Microcontroller for the prototype
+- **0.96" I2C OLED Display (SSD1306)** – Visual output for all readings
+- **Soil Moisture Sensor (Analog)** – Soil hydration measurement
+- **Water Level Sensor (Analog)** – Tank or presence detection
+- **LM35 Temperature Sensor** – Accurate temperature readings in °C
+- **LDR (Light-Dependent Resistor)** – Ambient light detection
+- **10kΩ Resistor** – Required for the LDR voltage divider
+- **Breadboard & Jumper Wires** – For prototyping and testing
 
 ## Circuit Connections
 
-Below is a detailed explanation of the circuit connections for the plant monitoring system.
+(Optionally include an image later:  
+`![Connections](images/connections.png)`)
 
-### OLED Display (I2C)
+### OLED Display (SSD1306, I2C)
 
 - VCC → 5V
 - GND → GND
@@ -30,13 +31,13 @@ Below is a detailed explanation of the circuit connections for the plant monitor
 
 ### Soil Moisture Sensor
 
-- A0 → A0
+- Signal → A0
 - VCC → 5V
 - GND → GND
 
 ### Water Level Sensor
 
-- A0 → A1
+- Signal → A1
 - VCC → 5V
 - GND → GND
 
@@ -46,33 +47,29 @@ Below is a detailed explanation of the circuit connections for the plant monitor
 - VCC → 5V
 - GND → GND
 
-### LDR (Light Sensor)
+### LDR (Light Sensor) with Voltage Divider
 
-Voltage divider setup:
-
-- LDR one leg → 5V
-- LDR other leg → A3
+- LDR leg → 5V
+- Other LDR leg → A3
 - 10kΩ resistor from A3 → GND
 
 ## Code Explanation
 
-The code continuously reads analog inputs from all sensors and processes the values.  
-To stabilize noisy readings (especially the LM35 temperature sensor and LDR), an **Exponential Moving Average (EMA) filter** is applied to each measurement.  
-The OLED screen shows the filtered values with icons for each category. ([Source Code](src/smart_pot_prototype.ino))
+The system continuously reads analog values from all sensors and applies **Exponential Moving Average (EMA)** filtering for smoother readings.  
+Soil, water, and light values are mapped to percentage scales (0–100%), while the temperature is calculated in °C.
+The OLED displays each value with its corresponding icon in four aligned rows. ([Source Code](src/smart_pot_prototype.ino))
 
-### Main Code Logic:
+### Main Features:
 
-- Read raw analog values from the sensors
-- Convert the LM35 reading into Celsius
-- Apply EMA filtering for stable output
-- Convert soil, water, and light sensor values into percentages (0–100%)
-- Display all data on the OLED in four rows with small icons
-- Refresh every 200 ms
+- Real-time multi-sensor monitoring
+- Filtered and stable readings
+- Clean icon-based OLED display
+- Modular design for an easy future transition to ESP32
 
 ## How to Use
 
-1. Assemble the circuit using a breadboard according to the connections above.
-2. Upload the provided code via Arduino IDE.
-3. Power the Arduino — the OLED screen will immediately show sensor readings.
-4. Adjust and test the sensors by touching soil, exposing the LDR to light, or dipping the water sensor.
-5. This prototype will later be migrated to an ESP32 for the final smart plant pot system.
+1. Build the circuit on a breadboard following the pin mappings.
+2. Upload the provided code using Arduino IDE.
+3. Power the system — the OLED will begin showing live sensor data.
+4. Test sensor behavior (soil moisture, water contact, light changes).
+5. This prototype will eventually evolve into a full **Smart Pot** ESP32-based final product.
