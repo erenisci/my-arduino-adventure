@@ -14,7 +14,7 @@ This project uses a gas sensor to detect gas leaks. When the sensor value exceed
 
 ## Circuit Connections
 
-Below is a detailed explanation of the circuit connections for the gas leak detection system. Ensure that all components are properly connected as described to avoid malfunction. ([Connections](gas_sensor.png))
+Below is a detailed explanation of the circuit connections for the gas leak detection system. Ensure that all components are properly connected as described to avoid malfunction.
 
 - Gas Sensor:
 
