@@ -19,9 +19,6 @@ This repository represents the **prototyping phase**, which will later be migrat
 
 ## Circuit Connections
 
-(Optionally include an image later:  
-`![Connections](images/connections.png)`)
-
 ### OLED Display (SSD1306, I2C)
 
 - VCC → 5V
